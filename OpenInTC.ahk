@@ -14,7 +14,7 @@
         }
     }
     if (path = "") {
-        MsgBox "Не удалось получить путь папки"
+        MsgBox "Failed to get folder path"
         return
     }
     
@@ -24,7 +24,7 @@
     try {
         Run cmd
     } catch as e {
-        MsgBox "Ошибка запуска: " e.Message "`n" cmd
+        MsgBox "Launch error: " e.Message "`n" cmd
         return
     }
     

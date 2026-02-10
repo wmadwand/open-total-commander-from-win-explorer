@@ -1,6 +1,6 @@
 # Open in Total Commander from Windows Explorer
 
-A lightweight AutoHotkey script that adds a **Ctrl+T** shortcut to Windows File Explorer, instantly opening the current folder in Total Commander.
+A lightweight AutoHotkey script that adds a **Ctrl+T** shortcut to Windows File Explorer and Open/Save dialogs, instantly opening the current folder in Total Commander.
 
 ## Requirements
 
@@ -12,7 +12,7 @@ A lightweight AutoHotkey script that adds a **Ctrl+T** shortcut to Windows File 
 
 1. Install [AutoHotkey v2.0](https://www.autohotkey.com/) if you don't have it already.
 2. Download or clone this repository.
-3. Double-click `OpenInTC.ahk` to run the script.
+3. Double-click `OpenInTC.ahk` to run the script. A UAC prompt will appear — the script needs admin rights to work with dialogs in elevated apps (Visual Studio, Unity, etc.).
 
 ### Run on startup (optional)
 
@@ -23,20 +23,28 @@ To start the script automatically with Windows:
 
 ## Usage
 
-1. Open any folder in **Windows File Explorer**.
+1. Open any folder in **Windows File Explorer** or an **Open/Save dialog**.
 2. Press **Ctrl+T**.
 3. The same folder opens in **Total Commander** (right panel, new tab).
 
-The hotkey only works when an Explorer window is focused — it won't interfere with other applications.
+### Where it works
+
+| Context | Status |
+|---------|--------|
+| Windows File Explorer | Supported |
+| Open/Save dialogs (Notepad++, FastStone, Meld, etc.) | Supported |
+| Open/Save dialogs in elevated apps (Visual Studio, Unity) | Supported (requires admin) |
+
+The hotkey only activates in Explorer windows and file dialogs — it won't interfere with other applications.
 
 ## Configuration
 
 ### Custom Total Commander path
 
-If Total Commander is installed in a non-default location, edit line 12 in `OpenInTC.ahk` and replace the path:
+If Total Commander is installed in a non-default location, edit the `tc` variable in `OpenInTC.ahk`:
 
 ```ahk
-Run '"C:\your\path\to\TOTALCMD64.EXE" /O /T /R="' path '"'
+tc := "C:\your\path\to\TOTALCMD64.EXE"
 ```
 
 ### Total Commander flags
